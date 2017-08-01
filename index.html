@@ -146,6 +146,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cordova那些事儿-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/jeasonnow/jeasonnow/2017/08/01/cordova那些事儿-1/">cordova那些事儿(1)</a>
+    </h1>
+  
+
+        
+        <a href="/jeasonnow/jeasonnow/2017/08/01/cordova那些事儿-1/" class="archive-article-date">
+  	<time datetime="2017-08-01T06:52:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>生命不息，踩坑不止</p>
+</blockquote>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>因本人技术有限，无法完全吃透js和android原生代码，难免会在工程项目（cordova + angularjs）中遇到一些稀奇古怪的问题，今后将针对这些问题进行一些随笔的记录</p>
+<h3 id="问题所在"><a href="#问题所在" class="headerlink" title="问题所在"></a>问题所在</h3><p>今日所遇问题其实很简单，在使用我司自行研发的cordova插件来通过传入的url在浏览器打开时出现了问题，研究发现在ios中未出现，于是通过调试将问题锁定至该处：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    newVersion = responseInfo.latestedVersion,</div><div class="line">    nativeUtils</div><div class="line">;</div><div class="line"></div><div class="line">newVersion = newVersion.replace(<span class="regexp">/\./g</span>, <span class="string">""</span>);</div><div class="line">newVersion = <span class="built_in">parseInt</span>(newVersion);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(MC_GLOBAL.OSInfo.isAndroid)&#123;</div><div class="line">    $<span class="built_in">window</span>.plugins.GetAppPlugin.getNewApp(newVersion, responseInfo.url);</div><div class="line"></div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(MC_GLOBAL.OSInfo.isIos)&#123;</div><div class="line">    nativeUtils = angular.element(<span class="built_in">document</span>).injector().get(<span class="string">"nativeUtils"</span>);</div><div class="line">    nativeUtils.mcOpen(responseInfo.iosHref, <span class="string">"_blank"</span>, &#123;<span class="attr">hidden</span>: <span class="string">"no"</span>&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由以上业务代码进行分析，其实IOS和android的处理流程进行了分离，而ios只是直接显示的调用本地浏览器打开页面，而android则走了插件中的getNewApp方法，于是去原生代码中寻找问题，重新定位问题至：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">else</span> <span class="keyword">if</span>(action.equals(<span class="string">"getNewApp"</span>))&#123;</div><div class="line">Context context = cordova.getActivity().getApplicationContext();</div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW,Uri.parse(args.getString(<span class="number">1</span>)));</div><div class="line">    <span class="comment">//intent.setClassName("com.android.browser", "com.android.browser.BrowserActivity");</span></div><div class="line">    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">    context.startActivity(intent);</div><div class="line">&#125;<span class="keyword">catch</span>(Exception e2)&#123;</div><div class="line">    e2.printStackTrace();;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以发现其实这里是通过new Intent打开通过getNewApp传递的第二个参数：responseInfo.url，至此仍未发现问题所在，但是在网上查找Intent的用法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Uri uri = Uri.parse(&quot;http://www.google.com&quot;); //浏览器(网址必须带http) </div><div class="line"></div><div class="line">//Uri uri =Uri.parse(&quot;tel:1232333&quot;);       //拨号程序 //Uri uri=Uri.parse</div><div class="line"></div><div class="line">(&quot;geo:39.899533,116.036476&quot;);  //打开地图定位 Intent it  = new Intent</div><div class="line"></div><div class="line">(Intent.ACTION_VIEW,uri);  //Intent.ACTION_VIEW不带引号</div></pre></td></tr></table></figure></p>
+<p>可以发现其实在new Intent中第二个参数始终会带上一个协议名：例如http,geo,tel；用于通知java应当使用什么方法来使用这些参数，越是与测试进行对称，发现确实是在录入地址时忘记带上http协议名，修正后问题迎刃而解！</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>原生问题不熟悉会导致遇到的坑难以解决，学习原生乃当务之急。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/jeasonnow/jeasonnow/2017/08/01/cordova那些事儿-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-那些年踩过的InAppBrowser坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

@@ -6,18 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>那些年踩过的InAppBrowser坑 | jeasonnow</title>
+  <title>Archives: 2017/8 | jeasonnow</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cordova是个坑，inAppBrowser更甚 -周树人  好了以上我只是开个玩笑:) 在如今的公司我们最主要的项目就是基于cordova的APP项目，所以免不了每天面对各种各样不同的插件，例如什么cordova-plugin-camera啊，phonegap-plugin-barcodescanner啦，虽然为我们在通过直接使用js调用原生功能提供了许多的便利，但是不可避免他也带来了">
-<meta property="og:type" content="article">
-<meta property="og:title" content="那些年踩过的InAppBrowser坑">
-<meta property="og:url" content="http://yoursite.com/jeasonnow/2017/07/17/那些年踩过的InAppBrowser坑/index.html">
+  <meta name="description" content="coding life">
+<meta property="og:type" content="website">
+<meta property="og:title" content="jeasonnow">
+<meta property="og:url" content="http://yoursite.com/archives/2017/08/index.html">
 <meta property="og:site_name" content="jeasonnow">
-<meta property="og:description" content="cordova是个坑，inAppBrowser更甚 -周树人  好了以上我只是开个玩笑:) 在如今的公司我们最主要的项目就是基于cordova的APP项目，所以免不了每天面对各种各样不同的插件，例如什么cordova-plugin-camera啊，phonegap-plugin-barcodescanner啦，虽然为我们在通过直接使用js调用原生功能提供了许多的便利，但是不可避免他也带来了">
-<meta property="og:updated_time" content="2017-07-17T05:23:57.000Z">
+<meta property="og:description" content="coding life">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="那些年踩过的InAppBrowser坑">
-<meta name="twitter:description" content="cordova是个坑，inAppBrowser更甚 -周树人  好了以上我只是开个玩笑:) 在如今的公司我们最主要的项目就是基于cordova的APP项目，所以免不了每天面对各种各样不同的插件，例如什么cordova-plugin-camera啊，phonegap-plugin-barcodescanner啦，虽然为我们在通过直接使用js调用原生功能提供了许多的便利，但是不可避免他也带来了">
+<meta name="twitter:title" content="jeasonnow">
+<meta name="twitter:description" content="coding life">
   
     <link rel="alternative" href="/atom.xml" title="jeasonnow" type="application/atom+xml">
   
@@ -145,203 +144,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-那些年踩过的InAppBrowser坑" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      那些年踩过的InAppBrowser坑
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/jeasonnow/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/jeasonnow/jeasonnow/2017/08/01/cordova那些事儿-1/" class="archive-article-date">
+  	<time datetime="2017-08-01T06:52:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/jeasonnow/jeasonnow/2017/08/01/cordova那些事儿-1/">cordova那些事儿(1)</a>
     </h1>
   
 
-        
-        <a href="/jeasonnow/jeasonnow/2017/07/17/那些年踩过的InAppBrowser坑/" class="archive-article-date">
-  	<time datetime="2017-07-17T03:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>cordova是个坑，inAppBrowser更甚 -周树人</p>
-</blockquote>
-<p><em>好了以上我只是开个玩笑:)</em></p>
-<p>在如今的公司我们最主要的项目就是基于cordova的APP项目，所以免不了每天面对各种各样不同的插件，例如什么cordova-plugin-camera啊，phonegap-plugin-barcodescanner啦，虽然为我们在通过直接使用js调用原生功能提供了许多的便利，但是不可避免他也带来了许许多多稀奇古怪的问题，有些来自原生，有些来自我们本身代码的缺陷，今天主要提及一下InAppBrowser插件</p>
-<h3 id="什么是InAppBrowser"><a href="#什么是InAppBrowser" class="headerlink" title="什么是InAppBrowser"></a>什么是InAppBrowser</h3><p>显而易见，InAppBrowser从字面意思理解：它是一个webApp中的浏览器。</p>
-<p>我们cordova的App本身其实就是用一个浏览器包裹了我们提供的web spa，通过css 和 js的配合，达到了与原生相仿的界面效果，这里就涉及到了原生的一个概念 webview ，我所描述的应用本身就是一个放在webview 中的页面，而InAppBrowser其实是通过再次创建一个新的webview，从而达到了在一个看起来像原生应用的原生应用（大实话！）中开启一个新的页面，这就可以达到集成第三方的页面到应用中。</p>
-<h3 id="InAppBrowser如何高效的集成"><a href="#InAppBrowser如何高效的集成" class="headerlink" title="InAppBrowser如何高效的集成"></a>InAppBrowser如何高效的集成</h3><p>但是在集成页面的时候我们不得不考虑，如何让这个集成的页面达到使用我们应用中用户信息以实现一个真正的业务功能呢？（总不可能集成一个没有功能的静态页面进来吧），这里就要提及一下我们集成页面常用的几种方式了：</p>
-<ul>
-<li><p>通过地址栏传值，这大概是最普遍的一种方式了，例如：?username=zhangsan&amp;time=1500267062416&amp;sign=xasfasff122312，这里通过地址栏让服务器接受一个get请求，把用户数据以及验证签名传过去让第三方的服务器进行处理，简单粗暴且有效，但是这个只适合一些比较基础的应用场景，当用户场景较复杂时就不推荐这种方式了，一个栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    key = <span class="string">"098818671ae04f298f244a8dbd0b7b10"</span>,  <span class="comment">//3方提供的KEY</span></div><div class="line">    cardNumber = MC_GLOBAL.userLoginInfo.pid,</div><div class="line">    visitUrl = <span class="string">"kwu.jsahvc.edu.cn/webapp/LoginController/oauthLogin"</span>; <span class="comment">//3方提供的地址</span></div><div class="line"></div><div class="line">    subApp.visitUrl = <span class="string">"http://"</span> + visitUrl + <span class="string">"?cardNumber="</span> + cardNumber + <span class="string">"&amp;signCode="</span> + MD5.hex_md5(cardNumber + key).toUpperCase();</div></pre></td></tr></table></figure>
-</li>
-<li><p>通过executeScript API来直接调用集成页面暴露到window上的方法，将用户信息直接传入方法当中，实现集成页面的功能，executeScript是由InAppBrowser提供的api，让主体webview与inappWebview之间的通信成为了可能，一个栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    visitUrl = subApp.visitUrl || <span class="string">""</span>,</div><div class="line">    refer,</div><div class="line">    useTokenString = <span class="string">'"function" === typeof MC_IAB_GET_TOKEN &amp;&amp; MC_IAB_GET_TOKEN("'</span> + MC_GLOBAL.token + <span class="string">'");'</span></div><div class="line">;</div><div class="line"></div><div class="line">httpMessageTypes[<span class="string">"CLEAR_OAUTH_CACHE"</span>] = <span class="string">"j_spring_security_logout"</span>;</div><div class="line"></div><div class="line">refer = nativeUtils.mcOpen(visitUrl, <span class="string">"_blank"</span>, &#123;</div><div class="line">    <span class="attr">location</span>: <span class="string">"yes"</span>,</div><div class="line">    <span class="attr">clearsessioncache</span>: <span class="string">"yes"</span>,</div><div class="line">    <span class="attr">clearcache</span> : <span class="string">"yes"</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">refer.addEventListener(<span class="string">"loadstop"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    refer.executeScript(&#123;</div><div class="line">        <span class="attr">code</span>: useTokenString</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">nativeUtils.perfectIAB(refer, &#123;</div><div class="line">    <span class="attr">shouldClose</span> : _shouldCloseIAB,</div><div class="line">    <span class="attr">didClose</span>    : _didClose</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_shouldCloseIAB</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_didClose</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><em>ps: 其实还存在直接使用iframe集成页面，让第三方调用基于h5 postMessage的我方sdk方式，但是这个不属于IAB形式，就不再提及</em></p>
-<h3 id="InAppBrowser的坑"><a href="#InAppBrowser的坑" class="headerlink" title="InAppBrowser的坑"></a>InAppBrowser的坑</h3><p>上面提及了IAB的集成方式，似乎听起来很棒，感觉是不是集成起来也是顺畅无比呢？如果这样想，你们还是得学习一个，因为集成的时候还要考虑几个比较坑爹的问题，比如最基本的下载问题。</p>
-<p>在iframe和InAppBrowser中其实默认是不支持直接下载文件的，如果你需要下载文件，你应当在监听到路由变化时去判断是不是应当打开系统浏览器下载，这个时候就需要添加监听，万幸的是IAB提供了监听机制，是不是很惊喜，当你兴奋地使用loadstart去监听时，发现用起来没问题，你是不是觉得就OK辣，然而问题并不简单，因为一般做下载的时候，第三方页面都会使用<strong>window.open</strong>，但是在ios的IAB中，是无法监听到window.open的，如果你需要监听路由的变化，在IOS中，只有<strong>location.hash</strong>的改变是可行的方案，然后当你改了之后，你会发现更坑爹的事情发生了：android不能监听了。。。是不是很绝望，是不是很难受，其实这个也是可以解决的，你只需要再增加一个<strong>loadstop</strong>监听就可以了。</p>
-<p>这之后基本上IAB的问题你都能大概的解决，但是偶尔你会遇到页面存在cookie缓存或者session缓存问题，这这里要么你就去调用第三方的清空缓存接口，要么你就直接使用IAB提供的options配置：</p>
-<blockquote>
-<p>clearcache = true</p>
-<p>clearsessioncache = true</p>
-</blockquote>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>IAB(InAppBrowser)为我们在使用webapp中起到了不可否认的重要作用，但是问题也存在于各种稀奇古怪的角落，以下是本文的重点（太长不看的朋友只用记住以下即可）：</p>
-<ul>
-<li>IAB集成方式：url传值，executeScript注入js执行集成页面方法</li>
-<li>IAB监听问题： android只能监听window.open的loadstart,ios只能监听location.hash的loadstart,但是android能够监听到location.hash的loadstop</li>
-<li>IAB缓存问题：使用第三方接口清除缓存，或者使用IAB options中的clearcache和clearsessioncache来清除IAB中的缓存</li>
-</ul>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
+          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃雪糕<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/jeasonnow/2017/07/17/那些年踩过的InAppBrowser坑/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/jeasonnow/jeasonnow/2017/08/01/cordova那些事儿-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          cordova那些事儿(1)
-        
-      </div>
-    </a>
   
   
-    <a href="/jeasonnow/jeasonnow/2017/07/14/safari下载文件乱码问题解决（转）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">safari下载文件乱码问题解决（转）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://yoursite.com/jeasonnow/jeasonnow/2017/07/17/那些年踩过的InAppBrowser坑/", 
-    sourceId: "那些年踩过的InAppBrowser坑",
-    productKey: "true",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -364,8 +220,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
