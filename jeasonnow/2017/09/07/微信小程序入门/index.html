@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>weex不完整踩坑指南 | jeasonnow</title>
+  <title>微信小程序入门 | jeasonnow</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="weex不完整踩坑指南 从install开始  作为阿里开发的write once run everywhere的框架,在自家的npm源里居然install后不能使用的问题，耻辱啊! 这种情况如此发生 ↓ 123456789101112131415161718192021222324// 此处使用cnpm源进行处理(sudo) cnpm install weex-toolkit// 此时按照文档输">
+  <meta name="description" content="微信小程序如何开始 注册微信开发者账号，申请小程序ID 下载微信开发者工具，通过小程序ID来进入开发者工具，进行开发、调试工作  工作流程了解小程序项目结构 wxapp pages app.wxss app.json app.js    这里的wxapp代表最外层目录，pages存放了所有小程序逻辑所需的页面，app.wxss是小程序的全局样式表，相当于普通写页面时的public，app.jso">
+<meta name="keywords" content="web, 微信小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="weex不完整踩坑指南">
-<meta property="og:url" content="http://yoursite.com/jeasonnow/2017/07/13/weex不完整踩坑指南/index.html">
+<meta property="og:title" content="微信小程序入门">
+<meta property="og:url" content="http://yoursite.com/jeasonnow/2017/09/07/微信小程序入门/index.html">
 <meta property="og:site_name" content="jeasonnow">
-<meta property="og:description" content="weex不完整踩坑指南 从install开始  作为阿里开发的write once run everywhere的框架,在自家的npm源里居然install后不能使用的问题，耻辱啊! 这种情况如此发生 ↓ 123456789101112131415161718192021222324// 此处使用cnpm源进行处理(sudo) cnpm install weex-toolkit// 此时按照文档输">
+<meta property="og:description" content="微信小程序如何开始 注册微信开发者账号，申请小程序ID 下载微信开发者工具，通过小程序ID来进入开发者工具，进行开发、调试工作  工作流程了解小程序项目结构 wxapp pages app.wxss app.json app.js    这里的wxapp代表最外层目录，pages存放了所有小程序逻辑所需的页面，app.wxss是小程序的全局样式表，相当于普通写页面时的public，app.jso">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2017-07-13T07:58:17.000Z">
+<meta property="og:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/mina-lifecycle.png?t=201796">
+<meta property="og:updated_time" content="2017-09-07T07:45:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="weex不完整踩坑指南">
-<meta name="twitter:description" content="weex不完整踩坑指南 从install开始  作为阿里开发的write once run everywhere的框架,在自家的npm源里居然install后不能使用的问题，耻辱啊! 这种情况如此发生 ↓ 123456789101112131415161718192021222324// 此处使用cnpm源进行处理(sudo) cnpm install weex-toolkit// 此时按照文档输">
+<meta name="twitter:title" content="微信小程序入门">
+<meta name="twitter:description" content="微信小程序如何开始 注册微信开发者账号，申请小程序ID 下载微信开发者工具，通过小程序ID来进入开发者工具，进行开发、调试工作  工作流程了解小程序项目结构 wxapp pages app.wxss app.json app.js    这里的wxapp代表最外层目录，pages存放了所有小程序逻辑所需的页面，app.wxss是小程序的全局样式表，相当于普通写页面时的public，app.jso">
+<meta name="twitter:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/mina-lifecycle.png?t=201796">
   
     <link rel="alternative" href="/atom.xml" title="jeasonnow" type="application/atom+xml">
   
@@ -146,44 +149,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-weex不完整踩坑指南" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-微信小程序入门" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      weex不完整踩坑指南
+      微信小程序入门
     </h1>
   
 
         
-        <a href="/jeasonnow/jeasonnow/2017/07/13/weex不完整踩坑指南/" class="archive-article-date">
-  	<time datetime="2017-07-13T07:53:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-13</time>
+        <a href="/jeasonnow/jeasonnow/2017/09/07/微信小程序入门/" class="archive-article-date">
+  	<time datetime="2017-09-07T07:44:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="weex不完整踩坑指南"><a href="#weex不完整踩坑指南" class="headerlink" title="weex不完整踩坑指南"></a>weex不完整踩坑指南</h2><blockquote>
-<p>从install开始</p>
-</blockquote>
-<p>作为阿里开发的write once run everywhere的框架,在自家的npm源里居然install后不能使用的问题，耻辱啊!</p>
-<p><em>这种情况如此发生 ↓</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">// 此处使用cnpm源进行处理</div><div class="line">(sudo) cnpm install weex-toolkit</div><div class="line"></div><div class="line">// 此时按照文档输入</div><div class="line">weex --version</div><div class="line"></div><div class="line">// 哈，他成功了！</div><div class="line">v1.0.5</div><div class="line"></div><div class="line">// 但是是真的吗？weex真的安装成功了？我们试下</div><div class="line">weex</div><div class="line"></div><div class="line">// 然后你会收获一个报错， 类似：</div><div class="line">PS C:\WINDOWS\system32&gt; weex</div><div class="line">C:\Users\SQWB\AppData\Roaming\npm\node_modules\weex-toolkit\node_modules\._xtoolkit@0.2.7@xtoolkit\src\package\NpmPackage.js:50</div><div class="line">            throw new Error(<span class="string">'resolve path error:'</span>+this.path)</div><div class="line"></div><div class="line">// 而正确的情况下你应该得到</div><div class="line">Usage: weex &lt;foo/bar/we_file_or_dir_path&gt;  [options]</div><div class="line"></div><div class="line">选项：</div><div class="line">--port    http listening port number ,default is 8081           [默认值: 8081]</div><div class="line">--wsport  websocket listening port number ,default is 8082      [默认值: 8082]</div><div class="line">--entry   the entry file <span class="keyword">in</span> a folder</div></pre></td></tr></table></figure>
-<p>这种情况其实很好解决，正如我最开始所说，只需要cnpm uninstall -g weex-toolkit卸载掉原本用cnpm安装的weex-toolkit，然后用Npm代替之即可。</p>
-<blockquote>
-<p>install不是结束，构建环境才是开始</p>
-</blockquote>
-<pre><code>好不容易安装了weex，激动地尝试了一下weex官网提供的各类api之后，发现了一个残酷的事实：是可以直接运行并生成一个spa，然而。。。如何打包生成app呢！
-</code></pre><p>使用weexpack, cnpm install -g weexpack可以帮助你快速构建一个能够自动打包的工程。<br>通过使用weexpack init xxxxx, weexpack platform add xxx, weexpack run xxx, weexpack build xxx等命令来进行简单暴力的打包处理</p>
-<blockquote>
-<p>工程目录的纠结</p>
-</blockquote>
-<p>在之前开发的工程的流程影响下，个人比较需求的是一种单独开发web spa，通过配置config文件，直接使用weexpack进行打包生成可直接使用的apk和ipa的工作流程。在初步接触了weexpack的webpack config文件后，发现他有一个很奇怪的处理流程。如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getEntryFileContent</span>(<span class="params">entryPath, vueFilePath</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> relativePath = pathTo.relative(pathTo.join(entryPath, <span class="string">'../'</span>), vueFilePath);</div><div class="line">  <span class="keyword">let</span> contents = <span class="string">''</span>;</div><div class="line">  <span class="keyword">if</span> (hasPluginInstalled) &#123;</div><div class="line">    <span class="keyword">const</span> plugindir = pathTo.resolve(<span class="string">'./web/plugin.js'</span>);</div><div class="line">    contents = <span class="string">'require(\''</span> + plugindir + <span class="string">'\') \n'</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (isWin) &#123;</div><div class="line">    relativePath = relativePath.replace(<span class="regexp">/\\/g</span>,<span class="string">'\\\\'</span>);</div><div class="line">  &#125;</div><div class="line">  contents += <span class="string">'var App = require(\''</span> + relativePath + <span class="string">'\')\n'</span>;</div><div class="line">  contents += <span class="string">'App.el = \'#root\'\n'</span>;</div><div class="line">  contents += <span class="string">'new Vue(App)\n'</span>;</div><div class="line">  <span class="keyword">return</span> contents;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fileType = <span class="string">''</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params">dir</span>) </span>&#123;</div><div class="line">  dir = dir || <span class="string">'.'</span>;</div><div class="line">  <span class="keyword">const</span> directory = pathTo.join(__dirname, <span class="string">'src'</span>, dir);</div><div class="line">  fs.readdirSync(directory)</div><div class="line">    .forEach(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">const</span> fullpath = pathTo.join(directory, file);</div><div class="line">      <span class="keyword">const</span> stat = fs.statSync(fullpath);</div><div class="line">      <span class="keyword">const</span> extname = pathTo.extname(fullpath);</div><div class="line">      <span class="keyword">if</span> (stat.isFile() &amp;&amp; extname === <span class="string">'.vue'</span> || extname === <span class="string">'.we'</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (!fileType) &#123;</div><div class="line">          fileType = extname;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (fileType &amp;&amp; extname !== fileType) &#123;</div><div class="line">          <span class="built_in">console</span>.log(<span class="string">'Error: This is not a good practice when you use ".we" and ".vue" togither!'</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">const</span> name = pathTo.join(dir, pathTo.basename(file, extname));</div><div class="line">        <span class="keyword">if</span> (extname === <span class="string">'.vue'</span>) &#123;</div><div class="line">          <span class="keyword">const</span> entryFile = pathTo.join(vueWebTemp, dir, pathTo.basename(file, extname) + <span class="string">'.js'</span>);</div><div class="line">          fs.outputFileSync(pathTo.join(entryFile), getEntryFileContent(entryFile, fullpath));</div><div class="line">          </div><div class="line">          entry[name] = pathTo.join(__dirname, entryFile) + <span class="string">'?entry=true'</span>;</div><div class="line">        &#125; </div><div class="line">        weexEntry[name] = fullpath + <span class="string">'?entry=true'</span>;</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (stat.isDirectory() &amp;&amp; file !== <span class="string">'build'</span> &amp;&amp; file !== <span class="string">'include'</span>) &#123;</div><div class="line">        <span class="keyword">const</span> subdir = pathTo.join(dir, file);</div><div class="line">        walk(subdir);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>它会自执行一次这个walk方法，对存放页面的dir(src)进行一次处理，这会导致不管你是web环境还是native环境，他都会有一个多入口，因为他会把src下的所有vue文件，进行接析并生成一个对应的实例。这一点搞得我想当懵逼。。甚至是我一度放弃使用weex的原因所在，哪怕是在踩坑指南中，都一致提出过，在run web的时候应当只存在一个入口文件，而不是类native需要对.we文件进行多入口的处理，这个问题仍然需要我去慢慢解决。。</p>
+        <h2 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h2><h3 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h3><ul>
+<li>注册微信开发者账号，申请小程序ID</li>
+<li>下载微信开发者工具，通过小程序ID来进入开发者工具，进行开发、调试工作</li>
+</ul>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><h4 id="了解小程序项目结构"><a href="#了解小程序项目结构" class="headerlink" title="了解小程序项目结构"></a>了解小程序项目结构</h4><ul>
+<li>wxapp<ul>
+<li>pages</li>
+<li>app.wxss</li>
+<li>app.json</li>
+<li>app.js</li>
+</ul>
+</li>
+</ul>
+<p>这里的<em>wxapp</em>代表最外层目录，<em>pages</em>存放了所有小程序逻辑所需的页面，<em>app.wxss</em>是小程序的全局样式表，相当于普通写页面时的public，<em>app.json</em>是app所需的pages的注册逻辑，app.js是初始化微信小程序的js，app的声明注册只能存在一次，同时在全局会存在一个getApp方法，可以通过这个方法，获取在app.js中声明的app实例，并获取global数据来进行操作。</p>
+<p>app.json 配置文档，详参<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html" target="_blank" rel="external">app.json配置</a></p>
+<h4 id="开始工作"><a href="#开始工作" class="headerlink" title="开始工作"></a>开始工作</h4><ul>
+<li><p>在app.js中创建小程序实例，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">App(&#123;</div><div class="line">  onLaunch: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something initial when launch.</span></div><div class="line">  &#125;,</div><div class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">      <span class="comment">// Do something when show.</span></div><div class="line">  &#125;,</div><div class="line">  onHide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// Do something when hide.</span></div><div class="line">  &#125;,</div><div class="line">  onError: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(msg)</div><div class="line">  &#125;,</div><div class="line">  globalData: <span class="string">'I am global data'</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">其中可见onLaunch、onShow、onHide、onError、globalData，其中前四项为整个app的生命周期，分别为加载中，显示中，隐藏中，以及在遇到错误时，最后的globalData时整个app实例的全局数据，用于保存当前app的重要数据，用于之后的pages模块使用，常见用于保存用户信息。</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在app.json配置pages 配置方式参考上面</p>
+</li>
+<li>在pages中声明page实例，如下：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//index.js</span></div><div class="line">Page(&#123;</div><div class="line">  data: &#123;</div><div class="line">    text: <span class="string">"This is page data."</span></div><div class="line">  &#125;,</div><div class="line">  onLoad: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="comment">// Do some initialize when page load.</span></div><div class="line">  &#125;,</div><div class="line">  onReady: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page ready.</span></div><div class="line">  &#125;,</div><div class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page show.</span></div><div class="line">  &#125;,</div><div class="line">  onHide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page hide.</span></div><div class="line">  &#125;,</div><div class="line">  onUnload: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page close.</span></div><div class="line">  &#125;,</div><div class="line">  onPullDownRefresh: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when pull down.</span></div><div class="line">  &#125;,</div><div class="line">  onReachBottom: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page reach bottom.</span></div><div class="line">  &#125;,</div><div class="line">  onShareAppMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// return custom share data when user share.</span></div><div class="line">  &#125;,</div><div class="line">  onPageScroll: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page scroll</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// Event handler.</span></div><div class="line">  viewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.setData(&#123;</div><div class="line">      text: <span class="string">'Set some data for updating view.'</span></div><div class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// this is setData callback</span></div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line">  customData: &#123;</div><div class="line">    hi: <span class="string">'MINA'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    可以看出page存在onLoad、onReady、onShow、onHide、onUnload、onPullDownRefresh、onReachBottom、onShareAppMessage、onPageScroll的生命周期，另外可以通过自定义object参数来为page的view视图绑定方法或者参数。详细的声明周期解释详见下</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/mina-lifecycle.png?t=201796" alt="wx小程序声明周期"></p>
+<h4 id="小程序的路由机制"><a href="#小程序的路由机制" class="headerlink" title="小程序的路由机制"></a>小程序的路由机制</h4><ul>
+<li>页面进出栈形式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>路由方式</th>
+<th style="text-align:center">页面栈表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始化</td>
+<td style="text-align:center">新页面入栈</td>
+</tr>
+<tr>
+<td>打开新页面</td>
+<td style="text-align:center">新页面入栈</td>
+</tr>
+<tr>
+<td>页面重定向</td>
+<td style="text-align:center">当前页面出栈，新页面入栈</td>
+</tr>
+<tr>
+<td>页面返回</td>
+<td style="text-align:center">当前页面出栈</td>
+</tr>
+<tr>
+<td>tab切换</td>
+<td style="text-align:center">所有页面出栈，新页面入栈</td>
+</tr>
+<tr>
+<td>重加载</td>
+<td style="text-align:center">所有页面出栈，仅留下当前页面</td>
+</tr>
+<tr>
+<td>页面重定向</td>
+<td style="text-align:center">当前页面出栈，新页面入栈</td>
+</tr>
+</tbody>
+</table>
+<p><em>ps: 可以使用全局方法getCurrentPages获取当前的页面栈实例，但是切记不可改变这个栈</em></p>
+<ul>
+<li>页面加载时触发的生命周期一览</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>路由方式</th>
+<th style="text-align:center">触发时机</th>
+<th style="text-align:center">之前页面生命周期</th>
+<th style="text-align:center">跳转后的页面生命周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始化</td>
+<td style="text-align:center">小程序打开的第一个页面</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>打开新页面</td>
+<td style="text-align:center">调用方法或者组件打开页面</td>
+<td style="text-align:center">onHide</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>页面重定向</td>
+<td style="text-align:center">调用方法或者组件重定向</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>页面返回</td>
+<td style="text-align:center">调用方法或组件返回</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onShow</td>
+</tr>
+<tr>
+<td>tab切换</td>
+<td style="text-align:center">组件或者方法，或者用户行为</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>重加载</td>
+<td style="text-align:center">组件或者方法，或者用户行为</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+</tbody>
+</table>
+<p><em>通过上面的进出栈形式和这个表的对比，我们可以发现，其实新页面入栈始终会通过onLoad和onShow生命周期，因为根据生命周期图表的显示，一个页面要渲染，首先需要onLoad加载出page实例数据，从而通过first render来渲染到视图，从而触发onShow</em></p>
+<h4 id="小程序视图层"><a href="#小程序视图层" class="headerlink" title="小程序视图层"></a>小程序视图层</h4><ul>
+<li>数据绑定: (参照vue、angularjs的数据绑定形式)</li>
+<li>列表渲染: 通过类似v-for以及ng-for的循环方式，循环一个数组，在wx:for的下层，可以通过index指向当前遍历的item的索引值，但是与vue和ng不同的是，它并没有使用xx in array的形式，而是直接通过wx:for-item=”xx”来表明当前item的指代（别名）,可以使用block 和wx:for的配合，来生成多个结构块,当渲染的数据是动态时，务必使用wx:key来达到ng 的 track by 效果;</li>
+<li><p>条件渲染:类似vue和ng的形式，无须多提</p>
+</li>
+<li><p>模板: 对模板的理解就是ng中的视图（渲染）组件，没有任何业务功能，仅仅作为展示作用，使用 <strong>template</strong> 的 <strong>is</strong> 属性指示使用的模板，用data代表这个模板中的数据作用域，即可完成数据的渲染</p>
+<h4 id="wxs"><a href="#wxs" class="headerlink" title="wxs"></a>wxs</h4></li>
+<li><p>wxs 目前主要是增强 wxml 标签的表达能力，使用了module require 和标签 <em>wxs</em> 来引用export出来的wxs<br>module,并在wxml中展示</p>
+<p>使用方法参详：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// /pages/tools.wxs</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> foo = <span class="string">"'hello world' from tools.wxs"</span>;</div><div class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params">d</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  FOO: foo,</div><div class="line">  bar: bar,</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports.msg = <span class="string">"some msg"</span>;</div><div class="line">&lt;!-- page/index/index.wxml --&gt;</div><div class="line"></div><div class="line">&lt;wxs src=<span class="string">"./../tools.wxs"</span> <span class="built_in">module</span>=<span class="string">"tools"</span> /&gt;</div><div class="line">&lt;view&gt; &#123;&#123;tools.msg&#125;&#125; &lt;<span class="regexp">/view&gt;</span></div><div class="line"><span class="regexp">&lt;view&gt; &#123;&#123;tools.bar(tools.FOO)&#125;&#125; &lt;/</span>view&gt;</div></pre></td></tr></table></figure></li>
+</ul>
 
       
 
@@ -213,6 +328,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web, 微信小程序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -263,7 +389,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/jeasonnow/2017/07/13/weex不完整踩坑指南/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/jeasonnow/2017/09/07/微信小程序入门/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,18 +403,9 @@
   
 <nav id="article-nav">
   
-    <a href="/jeasonnow/jeasonnow/2017/07/14/safari下载文件乱码问题解决（转）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          safari下载文件乱码问题解决（转）
-        
-      </div>
-    </a>
   
-  
-    <a href="/jeasonnow/jeasonnow/2017/07/12/万事开头难/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">万事开头难</div>
+    <a href="/jeasonnow/jeasonnow/2017/08/07/随想/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随想</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -319,8 +436,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/jeasonnow/jeasonnow/2017/07/13/weex不完整踩坑指南/", 
-    sourceId: "weex不完整踩坑指南",
+    url: "http://yoursite.com/jeasonnow/jeasonnow/2017/09/07/微信小程序入门/", 
+    sourceId: "微信小程序入门",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };

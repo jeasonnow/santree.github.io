@@ -14,6 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="jeasonnow">
 <meta property="og:description" content="coding life">
+<meta property="og:locale" content="CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jeasonnow">
 <meta name="twitter:description" content="coding life">
@@ -145,6 +146,209 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-微信小程序入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/jeasonnow/jeasonnow/2017/09/07/微信小程序入门/">微信小程序入门</a>
+    </h1>
+  
+
+        
+        <a href="/jeasonnow/jeasonnow/2017/09/07/微信小程序入门/" class="archive-article-date">
+  	<time datetime="2017-09-07T07:44:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h2><h3 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h3><ul>
+<li>注册微信开发者账号，申请小程序ID</li>
+<li>下载微信开发者工具，通过小程序ID来进入开发者工具，进行开发、调试工作</li>
+</ul>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><h4 id="了解小程序项目结构"><a href="#了解小程序项目结构" class="headerlink" title="了解小程序项目结构"></a>了解小程序项目结构</h4><ul>
+<li>wxapp<ul>
+<li>pages</li>
+<li>app.wxss</li>
+<li>app.json</li>
+<li>app.js</li>
+</ul>
+</li>
+</ul>
+<p>这里的<em>wxapp</em>代表最外层目录，<em>pages</em>存放了所有小程序逻辑所需的页面，<em>app.wxss</em>是小程序的全局样式表，相当于普通写页面时的public，<em>app.json</em>是app所需的pages的注册逻辑，app.js是初始化微信小程序的js，app的声明注册只能存在一次，同时在全局会存在一个getApp方法，可以通过这个方法，获取在app.js中声明的app实例，并获取global数据来进行操作。</p>
+<p>app.json 配置文档，详参<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html" target="_blank" rel="external">app.json配置</a></p>
+<h4 id="开始工作"><a href="#开始工作" class="headerlink" title="开始工作"></a>开始工作</h4><ul>
+<li><p>在app.js中创建小程序实例，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">App(&#123;</div><div class="line">  onLaunch: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something initial when launch.</span></div><div class="line">  &#125;,</div><div class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">      <span class="comment">// Do something when show.</span></div><div class="line">  &#125;,</div><div class="line">  onHide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// Do something when hide.</span></div><div class="line">  &#125;,</div><div class="line">  onError: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(msg)</div><div class="line">  &#125;,</div><div class="line">  globalData: <span class="string">'I am global data'</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">其中可见onLaunch、onShow、onHide、onError、globalData，其中前四项为整个app的生命周期，分别为加载中，显示中，隐藏中，以及在遇到错误时，最后的globalData时整个app实例的全局数据，用于保存当前app的重要数据，用于之后的pages模块使用，常见用于保存用户信息。</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在app.json配置pages 配置方式参考上面</p>
+</li>
+<li>在pages中声明page实例，如下：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//index.js</span></div><div class="line">Page(&#123;</div><div class="line">  data: &#123;</div><div class="line">    text: <span class="string">"This is page data."</span></div><div class="line">  &#125;,</div><div class="line">  onLoad: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="comment">// Do some initialize when page load.</span></div><div class="line">  &#125;,</div><div class="line">  onReady: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page ready.</span></div><div class="line">  &#125;,</div><div class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page show.</span></div><div class="line">  &#125;,</div><div class="line">  onHide: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page hide.</span></div><div class="line">  &#125;,</div><div class="line">  onUnload: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page close.</span></div><div class="line">  &#125;,</div><div class="line">  onPullDownRefresh: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when pull down.</span></div><div class="line">  &#125;,</div><div class="line">  onReachBottom: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page reach bottom.</span></div><div class="line">  &#125;,</div><div class="line">  onShareAppMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// return custom share data when user share.</span></div><div class="line">  &#125;,</div><div class="line">  onPageScroll: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something when page scroll</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// Event handler.</span></div><div class="line">  viewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.setData(&#123;</div><div class="line">      text: <span class="string">'Set some data for updating view.'</span></div><div class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// this is setData callback</span></div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line">  customData: &#123;</div><div class="line">    hi: <span class="string">'MINA'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    可以看出page存在onLoad、onReady、onShow、onHide、onUnload、onPullDownRefresh、onReachBottom、onShareAppMessage、onPageScroll的生命周期，另外可以通过自定义object参数来为page的view视图绑定方法或者参数。详细的声明周期解释详见下</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/mina-lifecycle.png?t=201796" alt="wx小程序声明周期"></p>
+<h4 id="小程序的路由机制"><a href="#小程序的路由机制" class="headerlink" title="小程序的路由机制"></a>小程序的路由机制</h4><ul>
+<li>页面进出栈形式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>路由方式</th>
+<th style="text-align:center">页面栈表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始化</td>
+<td style="text-align:center">新页面入栈</td>
+</tr>
+<tr>
+<td>打开新页面</td>
+<td style="text-align:center">新页面入栈</td>
+</tr>
+<tr>
+<td>页面重定向</td>
+<td style="text-align:center">当前页面出栈，新页面入栈</td>
+</tr>
+<tr>
+<td>页面返回</td>
+<td style="text-align:center">当前页面出栈</td>
+</tr>
+<tr>
+<td>tab切换</td>
+<td style="text-align:center">所有页面出栈，新页面入栈</td>
+</tr>
+<tr>
+<td>重加载</td>
+<td style="text-align:center">所有页面出栈，仅留下当前页面</td>
+</tr>
+<tr>
+<td>页面重定向</td>
+<td style="text-align:center">当前页面出栈，新页面入栈</td>
+</tr>
+</tbody>
+</table>
+<p><em>ps: 可以使用全局方法getCurrentPages获取当前的页面栈实例，但是切记不可改变这个栈</em></p>
+<ul>
+<li>页面加载时触发的生命周期一览</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>路由方式</th>
+<th style="text-align:center">触发时机</th>
+<th style="text-align:center">之前页面生命周期</th>
+<th style="text-align:center">跳转后的页面生命周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初始化</td>
+<td style="text-align:center">小程序打开的第一个页面</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>打开新页面</td>
+<td style="text-align:center">调用方法或者组件打开页面</td>
+<td style="text-align:center">onHide</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>页面重定向</td>
+<td style="text-align:center">调用方法或者组件重定向</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>页面返回</td>
+<td style="text-align:center">调用方法或组件返回</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onShow</td>
+</tr>
+<tr>
+<td>tab切换</td>
+<td style="text-align:center">组件或者方法，或者用户行为</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+<tr>
+<td>重加载</td>
+<td style="text-align:center">组件或者方法，或者用户行为</td>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">onLoad、onShow</td>
+</tr>
+</tbody>
+</table>
+<p><em>通过上面的进出栈形式和这个表的对比，我们可以发现，其实新页面入栈始终会通过onLoad和onShow生命周期，因为根据生命周期图表的显示，一个页面要渲染，首先需要onLoad加载出page实例数据，从而通过first render来渲染到视图，从而触发onShow</em></p>
+<h4 id="小程序视图层"><a href="#小程序视图层" class="headerlink" title="小程序视图层"></a>小程序视图层</h4><ul>
+<li>数据绑定: (参照vue、angularjs的数据绑定形式)</li>
+<li>列表渲染: 通过类似v-for以及ng-for的循环方式，循环一个数组，在wx:for的下层，可以通过index指向当前遍历的item的索引值，但是与vue和ng不同的是，它并没有使用xx in array的形式，而是直接通过wx:for-item=”xx”来表明当前item的指代（别名）,可以使用block 和wx:for的配合，来生成多个结构块,当渲染的数据是动态时，务必使用wx:key来达到ng 的 track by 效果;</li>
+<li><p>条件渲染:类似vue和ng的形式，无须多提</p>
+</li>
+<li><p>模板: 对模板的理解就是ng中的视图（渲染）组件，没有任何业务功能，仅仅作为展示作用，使用 <strong>template</strong> 的 <strong>is</strong> 属性指示使用的模板，用data代表这个模板中的数据作用域，即可完成数据的渲染</p>
+<h4 id="wxs"><a href="#wxs" class="headerlink" title="wxs"></a>wxs</h4></li>
+<li><p>wxs 目前主要是增强 wxml 标签的表达能力，使用了module require 和标签 <em>wxs</em> 来引用export出来的wxs<br>module,并在wxml中展示</p>
+<p>使用方法参详：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// /pages/tools.wxs</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> foo = <span class="string">"'hello world' from tools.wxs"</span>;</div><div class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params">d</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> d;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  FOO: foo,</div><div class="line">  bar: bar,</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports.msg = <span class="string">"some msg"</span>;</div><div class="line">&lt;!-- page/index/index.wxml --&gt;</div><div class="line"></div><div class="line">&lt;wxs src=<span class="string">"./../tools.wxs"</span> <span class="built_in">module</span>=<span class="string">"tools"</span> /&gt;</div><div class="line">&lt;view&gt; &#123;&#123;tools.msg&#125;&#125; &lt;<span class="regexp">/view&gt;</span></div><div class="line"><span class="regexp">&lt;view&gt; &#123;&#123;tools.bar(tools.FOO)&#125;&#125; &lt;/</span>view&gt;</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web, 微信小程序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/jeasonnow/jeasonnow/2017/09/07/微信小程序入门/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-随想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -347,7 +551,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    key = <span class="string">"098818671ae04f298f244a8dbd0b7b10"</span>,  <span class="comment">//3方提供的KEY</span></div><div class="line">    cardNumber = MC_GLOBAL.userLoginInfo.pid,</div><div class="line">    visitUrl = <span class="string">"kwu.jsahvc.edu.cn/webapp/LoginController/oauthLogin"</span>; <span class="comment">//3方提供的地址</span></div><div class="line"></div><div class="line">    subApp.visitUrl = <span class="string">"http://"</span> + visitUrl + <span class="string">"?cardNumber="</span> + cardNumber + <span class="string">"&amp;signCode="</span> + MD5.hex_md5(cardNumber + key).toUpperCase();</div></pre></td></tr></table></figure>
 </li>
 <li><p>通过executeScript API来直接调用集成页面暴露到window上的方法，将用户信息直接传入方法当中，实现集成页面的功能，executeScript是由InAppBrowser提供的api，让主体webview与inappWebview之间的通信成为了可能，一个栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    visitUrl = subApp.visitUrl || <span class="string">""</span>,</div><div class="line">    refer,</div><div class="line">    useTokenString = <span class="string">'"function" === typeof MC_IAB_GET_TOKEN &amp;&amp; MC_IAB_GET_TOKEN("'</span> + MC_GLOBAL.token + <span class="string">'");'</span></div><div class="line">;</div><div class="line"></div><div class="line">httpMessageTypes[<span class="string">"CLEAR_OAUTH_CACHE"</span>] = <span class="string">"j_spring_security_logout"</span>;</div><div class="line"></div><div class="line">refer = nativeUtils.mcOpen(visitUrl, <span class="string">"_blank"</span>, &#123;</div><div class="line">    <span class="attr">location</span>: <span class="string">"yes"</span>,</div><div class="line">    <span class="attr">clearsessioncache</span>: <span class="string">"yes"</span>,</div><div class="line">    <span class="attr">clearcache</span> : <span class="string">"yes"</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">refer.addEventListener(<span class="string">"loadstop"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    refer.executeScript(&#123;</div><div class="line">        <span class="attr">code</span>: useTokenString</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">nativeUtils.perfectIAB(refer, &#123;</div><div class="line">    <span class="attr">shouldClose</span> : _shouldCloseIAB,</div><div class="line">    <span class="attr">didClose</span>    : _didClose</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_shouldCloseIAB</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_didClose</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    visitUrl = subApp.visitUrl || <span class="string">""</span>,</div><div class="line">    refer,</div><div class="line">    useTokenString = <span class="string">'"function" === typeof MC_IAB_GET_TOKEN &amp;&amp; MC_IAB_GET_TOKEN("'</span> + MC_GLOBAL.token + <span class="string">'");'</span></div><div class="line">;</div><div class="line"></div><div class="line">httpMessageTypes[<span class="string">"CLEAR_OAUTH_CACHE"</span>] = <span class="string">"j_spring_security_logout"</span>;</div><div class="line"></div><div class="line">refer = nativeUtils.mcOpen(visitUrl, <span class="string">"_blank"</span>, &#123;</div><div class="line">    location: <span class="string">"yes"</span>,</div><div class="line">    clearsessioncache: <span class="string">"yes"</span>,</div><div class="line">    clearcache : <span class="string">"yes"</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">refer.addEventListener(<span class="string">"loadstop"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    refer.executeScript(&#123;</div><div class="line">        code: useTokenString</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">nativeUtils.perfectIAB(refer, &#123;</div><div class="line">    shouldClose : _shouldCloseIAB,</div><div class="line">    didClose    : _didClose</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_shouldCloseIAB</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_didClose</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><em>ps: 其实还存在直接使用iframe集成页面，让第三方调用基于h5 postMessage的我方sdk方式，但是这个不属于IAB形式，就不再提及</em></p>
@@ -435,7 +639,7 @@
 <li><a href="http://kbyanc.blogspot.jp/2010/07/serving-file-downloads-with-non-ascii.html" target="_blank" rel="external">Serving file downloads with non-ascii</a></li>
 <li><a href="http://blog.robotshell.org/2012/deal-with-http-header-encoding-for-file-download/" target="_blank" rel="external">正确处理下载文件时HTTP头的编码问题（Content-Disposition）</a></li>
 </ul>
-<p>以下是大神的源代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* &lt;pre&gt;</div><div class="line">* 浏览器下载文件时需要在服务端给出下载的文件名，当文件名是ASCII字符时没有问题</div><div class="line">* 当文件名有非ASCII字符时就有可能出现乱码</div><div class="line">*</div><div class="line">* 这里的实现方式参考这篇文章</div><div class="line">* http://blog.robotshell.org/2012/deal-with-http-header-encoding-for-file-download/</div><div class="line">*</div><div class="line">* 最终设置的response header是这样:</div><div class="line">*</div><div class="line">* Content-Disposition: attachment;</div><div class="line">*                      filename="encoded_text";</div><div class="line">*                      filename*=utf-8''encoded_text</div><div class="line">*</div><div class="line">* 其中encoded_text是经过RFC 3986的“百分号URL编码”规则处理过的文件名</div><div class="line">* &lt;/pre&gt;</div><div class="line">* <span class="doctag">@param</span> response</div><div class="line">* <span class="doctag">@param</span> filename</div><div class="line">* <span class="doctag">@return</span></div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setFileDownloadHeader</span><span class="params">(HttpServletResponse response, String filename)</span> </span>&#123;</div><div class="line">  String headerValue = <span class="string">"attachment;"</span>;</div><div class="line">  headerValue += <span class="string">" filename=\""</span> + encodeURIComponent(filename) +<span class="string">"\";"</span>;</div><div class="line">  headerValue += <span class="string">" filename*=utf-8''"</span> + encodeURIComponent(filename);</div><div class="line">  response.setHeader(<span class="string">"Content-Disposition"</span>, headerValue);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* &lt;pre&gt;</div><div class="line">* 符合 RFC 3986 标准的“百分号URL编码”</div><div class="line">* 在这个方法里，空格会被编码成%20，而不是+</div><div class="line">* 和浏览器的encodeURIComponent行为一致</div><div class="line">* &lt;/pre&gt;</div><div class="line">* <span class="doctag">@param</span> value</div><div class="line">* <span class="doctag">@return</span></div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encodeURIComponent</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">return</span> URLEncoder.encode(value, <span class="string">"UTF-8"</span>).replaceAll(<span class="string">"\\+"</span>, <span class="string">"%20"</span>);</div><div class="line">  &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以下是大神的源代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* &lt;pre&gt;</span></div><div class="line"><span class="comment">* 浏览器下载文件时需要在服务端给出下载的文件名，当文件名是ASCII字符时没有问题</span></div><div class="line"><span class="comment">* 当文件名有非ASCII字符时就有可能出现乱码</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">* 这里的实现方式参考这篇文章</span></div><div class="line"><span class="comment">* http://blog.robotshell.org/2012/deal-with-http-header-encoding-for-file-download/</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">* 最终设置的response header是这样:</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">* Content-Disposition: attachment;</span></div><div class="line"><span class="comment">*                      filename="encoded_text";</span></div><div class="line"><span class="comment">*                      filename*=utf-8''encoded_text</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">* 其中encoded_text是经过RFC 3986的“百分号URL编码”规则处理过的文件名</span></div><div class="line"><span class="comment">* &lt;/pre&gt;</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> response</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> filename</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setFileDownloadHeader</span><span class="params">(HttpServletResponse response, String filename)</span> </span>&#123;</div><div class="line">  String headerValue = <span class="string">"attachment;"</span>;</div><div class="line">  headerValue += <span class="string">" filename=\""</span> + encodeURIComponent(filename) +<span class="string">"\";"</span>;</div><div class="line">  headerValue += <span class="string">" filename*=utf-8''"</span> + encodeURIComponent(filename);</div><div class="line">  response.setHeader(<span class="string">"Content-Disposition"</span>, headerValue);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* &lt;pre&gt;</span></div><div class="line"><span class="comment">* 符合 RFC 3986 标准的“百分号URL编码”</span></div><div class="line"><span class="comment">* 在这个方法里，空格会被编码成%20，而不是+</span></div><div class="line"><span class="comment">* 和浏览器的encodeURIComponent行为一致</span></div><div class="line"><span class="comment">* &lt;/pre&gt;</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> value</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encodeURIComponent</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">return</span> URLEncoder.encode(value, <span class="string">"UTF-8"</span>).replaceAll(<span class="string">"\\+"</span>, <span class="string">"%20"</span>);</div><div class="line">  &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>结尾语</p>
 </blockquote>
@@ -743,11 +947,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">转载,web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">转载,web</a>
+                <a href="javascript:void(0)" class="js-tag color1">web, 微信小程序</a>
               </li>
             
             <div class="clearfix"></div>
