@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>日常工作总结 | jeasonnow</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="coding life">
+  <meta name="description" content="适才换了工作，初次接触react，并使用其写了一个充满了bug的模块，故在此进行一些简单的总结：  关于react的componentWillUnmount  在某些情况下（刷新了跳转页面），切换了路由后，页面改变，但是不会触发componentWillUnmount的情况，这时在组件卸载的生命周期中的业务完全不会触发，只能从middleWare(react-redux-route)中进行一些处理">
+<meta name="keywords" content="日常">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日常工作总结">
 <meta property="og:url" content="http://yoursite.com/jeasonnow/2017/09/22/日常工作总结/index.html">
 <meta property="og:site_name" content="jeasonnow">
-<meta property="og:description" content="coding life">
+<meta property="og:description" content="适才换了工作，初次接触react，并使用其写了一个充满了bug的模块，故在此进行一些简单的总结：  关于react的componentWillUnmount  在某些情况下（刷新了跳转页面），切换了路由后，页面改变，但是不会触发componentWillUnmount的情况，这时在组件卸载的生命周期中的业务完全不会触发，只能从middleWare(react-redux-route)中进行一些处理">
 <meta property="og:locale" content="CN">
-<meta property="og:updated_time" content="2017-09-22T02:39:21.000Z">
+<meta property="og:updated_time" content="2017-09-22T04:03:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="日常工作总结">
-<meta name="twitter:description" content="coding life">
+<meta name="twitter:description" content="适才换了工作，初次接触react，并使用其写了一个充满了bug的模块，故在此进行一些简单的总结：  关于react的componentWillUnmount  在某些情况下（刷新了跳转页面），切换了路由后，页面改变，但是不会触发componentWillUnmount的情况，这时在组件卸载的生命周期中的业务完全不会触发，只能从middleWare(react-redux-route)中进行一些处理">
   
     <link rel="alternative" href="/atom.xml" title="jeasonnow" type="application/atom+xml">
   
@@ -166,7 +167,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>适才换了工作，初次接触react，并使用其写了一个充满了bug的模块，故在此进行一些简单的总结：</p>
+<blockquote>
+<p>关于react的componentWillUnmount</p>
+</blockquote>
+<p>在某些情况下（刷新了跳转页面），切换了路由后，页面改变，但是不会触发componentWillUnmount的情况，这时在组件卸载的生命周期中的业务完全不会触发，只能从middleWare(react-redux-route)中进行一些处理。</p>
+<blockquote>
+<p>关于事件冒泡</p>
+</blockquote>
+<p>这个事件冒泡并不是简单的处理，因为在UC的内核，和微信的内核上，这些问题是存在差异的，这个情况发生在一个遮挡全屏的蒙版和一个a标签上，a标签的层级在蒙版之上，蒙版有一个点击事件，这个事件会清空所有的元素（与a标签同级），这时在wx上的效果是正常的，他会先触发a标签的href，然后再冒泡到蒙版层，触发蒙版的点击事件，也就是正确的业务流程： 触发href -&gt; 清空元素，但是在UC内核的支付宝中，这个地方就会出问题，他会先触发蒙版的onclick事件，这导致了元素被清空，所以a标签的href就无法触发。导致该执行时序的问题并未找到具体原因，但是可以在a标签上绑定事件阻止事件冒泡，并且在事件中<strong>延迟执行</strong>清空元素，这样才能保证同时触发所有事件。</p>
+<blockquote>
+<p>react组件间的数据传递</p>
+</blockquote>
+<p>这里可以通过redux进行dispatch action来发布所需参数到总的state tree中，从而生成一个全局的state,然后在各个组件中connect 不同的参数来绑定参数到当前的组件中进行处理（如果存在特殊的路由处理，如刷新）可能导致state丢失。</p>
+
       
 
       
@@ -195,6 +209,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日常</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -405,6 +430,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web, 微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日常</a>
               </li>
             
             <div class="clearfix"></div>
